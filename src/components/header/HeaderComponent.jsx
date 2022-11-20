@@ -1,11 +1,11 @@
 import React from "react";
-import "../../styling.scss";
+import "../../sass/styling.scss";
 import EnvelopeIcon from "../navbar/components/EnvelopeIcon";
 
 export default function HeaderComponent() {
   return (
-    <div className="header">
-      <div className="logo">
+    <div className="HEADER">
+      <div className="rotate_logo">
         <EnvelopeIcon />
       </div>
       <h1>Digitalist</h1>

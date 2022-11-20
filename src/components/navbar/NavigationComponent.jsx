@@ -27,7 +27,7 @@ export default function NavbarComponent() {
   };
 
   return (
-    <nav className="Navbar">
+    <nav className="NAVIGATION">
       <input
         type="checkbox"
         className="SearchIcon"
@@ -46,17 +46,21 @@ export default function NavbarComponent() {
           </button>
         </div>
       </div>
-      <ul className={`menuNav ${searchBarOpen ? "showMenu" : "closeMenu"}`}>
-        <li>
-          <form>
-            <input type="text" placeholder="Search..."></input>
-            <input type="submit" value="Search"></input>
-          </form>
-        </li>
-      </ul>
-    
-      <ul className={`menuNav ${navBarOpen ? "showMenu" : "closeMenu"} `}>
-        <div className="menu">
+      <div>
+        <ul
+          className={`MainMenu ${searchBarOpen ? "show_menu" : "close_menu"}`}
+        >
+          <li>
+            <form>
+              <input type="text" placeholder="Search..."></input>
+              <input type="submit" value="Search"></input>
+            </form>
+          </li>
+        </ul>
+      </div>
+
+      <ul className={`MainMenu ${navBarOpen ? "show_menu" : "close_menu"} `}>
+        <div className="Menu btn:hover a-link:hover">
           <li>
             <a href="/">Home</a>
           </li>
@@ -64,19 +68,27 @@ export default function NavbarComponent() {
             <a href="/">About</a>
           </li>
           <li>
-            <button onClick={handleSubMenuToggle}>
-            Services
-            </button>
+            <button onClick={handleSubMenuToggle}>Services</button>
+            <DropDownIcon />
           </li>
-          <div>
-   
-            <ul className={`menuNav ${subMenuOpen ? "showMenu" : "closeMenu"} subMenu` }>
-              <li>service 1</li>
-              <li>service 2</li>
-              <li>service 3</li>
+          <div className="apply_transition">
+            <ul
+              className={`MainMenu ${
+                subMenuOpen ? "show_menu" : "close_menu"
+              } SubMenu`}
+            >
+              <li>
+                <a href="/">service 1</a>
+              </li>
+              <li>
+                <a href="/">service 2</a>
+              </li>
+              <li>
+                <a href="/">service 3</a>
+              </li>
             </ul>
           </div>
-          <li className={`${subMenuOpen ? "showMenu moveDown" : ""}`}>
+          <li className={`${subMenuOpen ? "show_menu move_down" : ""} `}>
             <a href="/">Contact</a>
           </li>
         </div>

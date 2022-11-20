@@ -1,0 +1,171 @@
+$BODY--background: rgb(37, 60, 82);
+
+$HEADER-background: rgba(0, 0, 0, 0.752);
+$HEADER-text-color: whitesmoke;
+$HEADER-opacity: 90%;
+
+$NAVIGATION_Menu_background: rgb(62, 190, 163);
+
+$Sub_Menu_text_color: black;
+
+@mixin heightWidth($h: unset, $w: unset) {
+  height: $h;
+  width: $w;
+}
+@mixin button_hover {
+  color: black;
+  font-weight: 700;
+}
+
+BODY {
+  min-width: 200px;
+  background-color: $BODY--background;
+}
+
+.HEADER {
+  @include heightWidth($w: 100%, $h: 80px);
+  display: inline-flex;
+  position: relative;
+  background-color: $HEADER-background;
+  color: $HEADER-text-color;
+  font-size: 15px;
+  opacity: $HEADER-opacity;
+  h1 {
+    margin-left: 30px;
+  }
+  .rotate_logo {
+    transform: rotate(-90deg) translateY(40px);
+  }
+}
+.NAVIGATION {
+  @include heightWidth($w: 100%);
+  display: inline-flex;
+  position: relative;
+  flex-direction: column;
+
+  input[type="checkbox"] {
+    display: none;
+  }
+
+  .iconContainer {
+    position: fixed;
+    right: 1%;
+    display: inline-flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-right: 15px;
+    translate: 0 -100px;
+    div {
+      margin-left: 10px;
+    }
+    button {
+      background: none;
+      padding: 7px;
+      padding-right: 15px;
+      border-style: round;
+      border: none;
+      cursor: pointer;
+    }
+  }
+
+  ul {
+    text-align: center;
+    z-index: 9;
+    li {
+      align-self: center;
+      background-color: $NAVIGATION_Menu_background;
+      padding: 10px;
+      font-size: 1.5em;
+      list-style: none;
+
+      a:link,
+      a:visited {
+        color: $HEADER-text-color;
+        display: inline-block;
+        text-decoration: none;
+      }
+
+      form {
+        ::placeholder {
+          color: rgb(44, 41, 41);
+          text-align: center;
+        }
+
+        input[type="text"] {
+          @include heightWidth(35px, 160px);
+          background-color: rgb(246, 241, 241);
+          border: none;
+          font-size: 15px;
+          font-weight: 400;
+          color: black;
+          outline: none;
+        }
+        input[type="submit"] {
+          @include heightWidth(37px, 100px);
+          background-color: rgb(0, 157, 255);
+          color: whitesmoke;
+          border: 3px solid white;
+          font-size: 15px;
+          font-weight: 400;
+        }
+      }
+    }
+
+    &.MainMenu {
+      .Menu {
+        @include heightWidth(400px);
+      }
+      position: fixed;
+      right: 0px;
+      overflow-y: scroll;
+      list-style: none;
+      background-color: none;
+      color: whitesmoke;
+      overflow: hidden;
+      margin: 0px;
+      z-index: 9;
+      translate: 0 -17.3px;
+      padding: 0px;
+      max-width: 300px;
+      a:hover {
+        @include button_hover();
+      }
+      .SubMenu {
+        translate: initial;
+        font-size: 0.75em;
+        color: $Sub_Menu_text_color;
+        font-weight: 500;
+      }
+
+      &.show_menu {
+        @include heightWidth($w: 100%);
+        padding-bottom: 10px;
+        li {
+          button {
+            border: none;
+            background: none;
+            color: whitesmoke;
+            font-size: 1em;
+            cursor: pointer;
+          }
+          button:hover {
+            @include button_hover();
+          }
+        }
+      }
+      &.close_menu {
+        @include heightWidth(0%);
+      }
+    }
+  }
+}
+
+.move_down {
+  translate: 0px 132px;
+}
+
+.apply_transition {
+  animation: growDown 300ms ease-in-out;
+}
+
+
