@@ -7,6 +7,7 @@ $HEADER-opacity: 90%;
 $NAVIGATION_Menu_background: rgb(62, 190, 163);
 
 $Sub_Menu_text_color: black;
+$breakpoint: 415px;
 
 @mixin heightWidth($h: unset, $w: unset) {
   height: $h;
@@ -16,14 +17,35 @@ $Sub_Menu_text_color: black;
   color: black;
   font-weight: 700;
 }
+@mixin breakpoint($bp) {
+  @media (min-width: $bp) {
+    max-width: 300px;
+  }
+}
 
 BODY {
-  min-width: 200px;
   background-color: $BODY--background;
 }
 
 .HEADER {
   @include heightWidth($w: 100%, $h: 80px);
+  @media(max-width: $breakpoint){
+    height: 160px;
+    width:100%;
+    .rotate_logo{
+      margin-left: 20px;
+
+    }
+    h1{
+      position: fixed;
+      right: 30px;
+    };
+  }
+  @media(max-width: 240px){
+    .rotate_logo{
+      opacity: 0;
+    }
+  }
   display: inline-flex;
   position: relative;
   background-color: $HEADER-background;
@@ -126,7 +148,8 @@ BODY {
       z-index: 9;
       translate: 0 -17.3px;
       padding: 0px;
-      max-width: 300px;
+      @include breakpoint($breakpoint);
+
       a:hover {
         @include button_hover();
       }
@@ -167,5 +190,3 @@ BODY {
 .apply_transition {
   animation: growDown 300ms ease-in-out;
 }
-
-

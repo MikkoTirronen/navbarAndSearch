@@ -69,7 +69,7 @@ export default function NavbarComponent() {
           </li>
           <li>
             <button onClick={handleSubMenuToggle}>Services</button>
-            <DropDownIcon />
+            
           </li>
           <div className="apply_transition">
             <ul
